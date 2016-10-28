@@ -12,9 +12,6 @@ Tests for `safety_django` module.
 import sys
 import unittest
 
-from safety_django import safety_django
-
-
 
 class TestSafety_django(unittest.TestCase):
 
