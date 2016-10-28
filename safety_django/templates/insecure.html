@@ -1,0 +1,23 @@
+{% if vulns %}
+<div class="safety-header safety-insecure">
+   You have {{ vulns|length }} package{{ vulns|length|pluralize }} with known security vulnerabilities installed. <span id="safety-show"> Show <span id="safety-chevron">&#x25BC;</span></span>
+    <div id="safety-vulns">
+        <table>
+            <thead>
+            <tr>
+                <th>Package</th>
+                <th>installed</th>
+                <th>affected</th>
+            </tr>
+        {% for vuln in vulns %}
+            <tr>
+                <td>{{ vuln.name }}</td>
+                <td>{{ vuln.version }}</td>
+                <td>{{ vuln.spec }}</td>
+            </tr>
+        {% endfor %}
+            </thead>
+        </table>
+    </div>
+</div>
+{% endif %}

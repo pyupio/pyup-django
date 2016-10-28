@@ -1,0 +1,92 @@
+{% extends "admin/base.html" %}
+{% block extrastyle %}
+    {{ block.super }}
+    <style>
+
+    .safety-insecure{
+      background: #ff1325 !important;
+    }
+
+    .safety-header{
+       width: 100%;
+      color: white;
+      overflow: hidden;
+      padding: 0px 10px 20px 40px;
+    }
+    .safety-header.dj-18{
+      padding: 0px 10px 10px 10px;
+    }
+
+    #safety-show{
+      cursor: pointer;
+    }
+
+    #safety-vulns{
+        padding: 10px;
+        display: none;
+    }
+
+    #safety-chevron{
+        font-size: 8px;
+    }
+
+
+  </style>
+{% endblock %}
+{% block extrahead %}
+    {{ block.super }}
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(event) {
+
+            function check() {
+                console.log("running check");
+                var path = '{% url "admin:safety" %}';
+                var httpRequest = new XMLHttpRequest();
+                httpRequest.onreadystatechange = function () {
+                    if (httpRequest.readyState === 4) {
+                        if (httpRequest.status === 200) {
+                            var data = JSON.parse(httpRequest.responseText);
+                            displayBanner(data);
+                        }
+                    }
+                };
+                httpRequest.open('GET', path);
+                httpRequest.send();
+            }
+
+            function displayBanner(data) {
+                console.log("called template");
+                var header = document.getElementById("header");
+                if (data.insecure) {
+                    header.className += "safety-insecure";
+                    header.outerHTML += data.template;
+                    document.getElementById("safety-show").onclick = function(e){
+                        // show the table view
+                        document.getElementById("safety-vulns").style.display = "block";
+                        // hide the clickable text
+                        document.getElementById("safety-show").style.display = "none";
+                    };
+                }
+
+            }
+
+            var nextRunAt = new Date();
+            //
+            {% if request.session.safety_django %}
+            nextRunAt.setTime({{ request.session.safety_django.run_again_at }} * 1000);
+            {% endif %}
+            console.log(nextRunAt);
+
+            if(nextRunAt < Date.now()){
+              // result of the last run is outdated, check again
+              check();
+            }else{
+              // result of the last run is still valid, use the data from the session to display the message
+              displayBanner({
+                "insecure": {% if request.session.safety_django.insecure %}true{% else %}false{% endif %},
+                "template": '{{ request.session.safety_django.template|safe }}'
+              });
+            }
+        });
+</script>
+{% endblock %}
