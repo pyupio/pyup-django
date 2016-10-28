@@ -1,40 +1,35 @@
-===============================
-Safety Django
-===============================
+*Note: safety-django is currently in it's early stages. It's probably no even installable and likely that there are some false positives and missing packages.*
 
+[![PyPi](https://img.shields.io/pypi/v/safety-django.svg)](https://pypi.python.org/pypi/safety-django)
+[![Travis](https://img.shields.io/travis/pyupio/safety-django.svg)](https://travis-ci.org/pyupio/safety-django)
 
-.. image:: https://img.shields.io/pypi/v/safety_django.svg
-        :target: https://pypi.python.org/pypi/safety_django
-
-.. image:: https://img.shields.io/travis/pyupio/safety_django.svg
-        :target: https://travis-ci.org/pyupio/safety_django
-
-.. image:: https://readthedocs.org/projects/safety-django/badge/?version=latest
-        :target: https://safety-django.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
-.. image:: https://pyup.io/repos/github/pyupio/safety_django/shield.svg
-     :target: https://pyup.io/repos/github/pyupio/safety_django/
-     :alt: Updates
-
+# About
 
 Safety for Django checks your installed dependencies for known security vulnerabilities and displays them in the admin area.
 
+# Installation
 
-* Free software: MIT license
-* Documentation: https://safety-django.readthedocs.io.
+Install `safety-django` with pip:
 
+```
+pip install safety-django
+```
 
-Features
---------
+and add it to your `INSTALLED_APPS`, before `django.contrib.admin`
 
-* TODO
+```
+INSTALLED_APPS = [
+    'safety_django',
+    'django.contrib.admin',
+]
+```
 
-Credits
----------
+# Screenshots
 
-This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
+![secure](secure.png)
+![insecure](insecure.png)
 
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+# Support
 
+If you are using `safety` in one of your projects, please consider getting a paid
+[pyup.io](https://pyup.io) account. This is what makes projects like this possible.
