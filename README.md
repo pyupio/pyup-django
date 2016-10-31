@@ -1,4 +1,4 @@
-*Note: safety-django is currently in it's early stages. It's probably no even installable and likely that there are some false positives and missing packages.*
+*Note: safety-django is currently in its early stages. It's probably no even installable and likely that there are some false positives and missing packages.*
 
 [![PyPi](https://img.shields.io/pypi/v/safety-django.svg)](https://pypi.python.org/pypi/safety-django)
 [![Travis](https://img.shields.io/travis/pyupio/safety-django.svg)](https://travis-ci.org/pyupio/safety-django)
