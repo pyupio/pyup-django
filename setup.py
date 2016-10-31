@@ -7,7 +7,7 @@ with open('README.md') as readme_file:
     readme = readme_file.read()
 
 requirements = [
-    # TODO: put package requirements here
+    'safety'
 ]
 
 test_requirements = [
@@ -17,7 +17,7 @@ test_requirements = [
 setup(
     name='safety-django',
     version='0.1.0',
-    description="Safety for Django checks your installed dependencies for known security vulnerabilities and displays them in the admin area.",
+    description="safety-django checks your installed dependencies for known security vulnerabilities and displays them in the admin area.",
     long_description=readme,
     author="pyup.io",
     author_email='support@pyup.io',
