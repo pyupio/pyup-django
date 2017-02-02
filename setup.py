@@ -15,23 +15,23 @@ test_requirements = [
 ]
 
 setup(
-    name='safety-django',
+    name='pyup-django',
     version='0.1.1',
-    description="safety-django checks your installed dependencies for known security vulnerabilities and displays them in the admin area.",
+    description="pyup-django checks your installed dependencies for known security vulnerabilities and displays them in the admin area.",
     long_description=readme,
     author="pyup.io",
     author_email='support@pyup.io',
-    url='https://github.com/pyupio/safety_django',
+    url='https://github.com/pyupio/pyup-django',
     packages=[
-        'safety_django',
+        'pyup_django',
     ],
-    package_dir={'safety_django':
-                 'safety_django'},
+    package_dir={'pyup_django':
+                 'pyup_django'},
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
     zip_safe=False,
-    keywords='safety_django',
+    keywords='pyup_django',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',

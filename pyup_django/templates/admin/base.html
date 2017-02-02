@@ -3,30 +3,30 @@
     {{ block.super }}
     <style>
 
-    .safety-insecure{
+    .pyup-insecure{
       background: #ff1325 !important;
     }
 
-    .safety-header{
+    .pyup-header{
        width: 100%;
       color: white;
       overflow: hidden;
       padding: 0px 10px 20px 40px;
     }
-    .safety-header.dj-18{
+    .pyup-header.dj-18{
       padding: 0px 10px 10px 10px;
     }
 
-    #safety-show{
+    #pyup-show{
       cursor: pointer;
     }
 
-    #safety-vulns{
+    #pyup-vulns{
         padding: 10px;
         display: none;
     }
 
-    #safety-chevron{
+    #pyup-chevron{
         font-size: 8px;
     }
 
@@ -39,7 +39,7 @@
         document.addEventListener("DOMContentLoaded", function(event) {
 
             function check() {
-                var path = '{% url "admin:safety" %}';
+                var path = '{% url "admin:pyup" %}';
                 var httpRequest = new XMLHttpRequest();
                 httpRequest.onreadystatechange = function () {
                     if (httpRequest.readyState === 4) {
@@ -56,13 +56,13 @@
             function displayBanner(data) {
                 var header = document.getElementById("header");
                 if (data.insecure) {
-                    header.className += "safety-insecure";
+                    header.className += "pyup-insecure";
                     header.outerHTML += data.template;
-                    document.getElementById("safety-show").onclick = function(e){
+                    document.getElementById("pyup-show").onclick = function(e){
                         // show the table view
-                        document.getElementById("safety-vulns").style.display = "block";
+                        document.getElementById("pyup-vulns").style.display = "block";
                         // hide the clickable text
-                        document.getElementById("safety-show").style.display = "none";
+                        document.getElementById("pyup-show").style.display = "none";
                     };
                 }
 
@@ -70,8 +70,8 @@
 
             var nextRunAt = new Date();
             //
-            {% if request.session.safety_django %}
-            nextRunAt.setTime({{ request.session.safety_django.run_again_at }} * 1000);
+            {% if request.session.pyup_django %}
+            nextRunAt.setTime({{ request.session.pyup_django.run_again_at }} * 1000);
             {% endif %}
 
             if(nextRunAt < Date.now()){
@@ -80,8 +80,8 @@
             }else{
               // result of the last run is still valid, use the data from the session to display the message
               displayBanner({
-                "insecure": {% if request.session.safety_django.insecure %}true{% else %}false{% endif %},
-                "template": '{{ request.session.safety_django.template|safe }}'
+                "insecure": {% if request.session.pyup_django.insecure %}true{% else %}false{% endif %},
+                "template": '{{ request.session.pyup_django.template|safe }}'
               });
             }
         });

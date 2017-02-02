@@ -1,4 +1,4 @@
-* safety-django version:
+* pyup-django version:
 * Django version:
 * Python version:
 * Operating System:

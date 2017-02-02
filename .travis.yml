@@ -2,7 +2,7 @@
 deploy:
   true:
     condition: $TOXENV == py27
-    repo: pyupio/safety-django
+    repo: pyupio/pyup-django
     tags: true
   distributions: sdist bdist_wheel
   password:

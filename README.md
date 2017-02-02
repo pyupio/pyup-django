@@ -1,25 +1,25 @@
-*Note: safety-django is currently in its early stages. It's probably no even installable and likely that there are some false positives and missing packages.*
+*Note: pyup-django is currently in its early stages. It's probably no even installable and likely that there are some false positives and missing packages.*
 
-[![PyPi](https://img.shields.io/pypi/v/safety-django.svg)](https://pypi.python.org/pypi/safety-django)
-[![Travis](https://img.shields.io/travis/pyupio/safety-django.svg)](https://travis-ci.org/pyupio/safety-django)
+[![PyPi](https://img.shields.io/pypi/v/pyup-django.svg)](https://pypi.python.org/pypi/pyup-django)
+[![Travis](https://img.shields.io/travis/pyupio/pyup-django.svg)](https://travis-ci.org/pyupio/pyup-django)
 
 # About
 
-Safety for Django checks your installed dependencies for known security vulnerabilities and displays them in the admin area.
+Checks your installed Django release for known security vulnerabilities and displays a warning in the admin area.
 
 # Installation
 
-Install `safety-django` with pip:
+Install `pyup-django` with pip:
 
 ```
-pip install safety-django
+pip install pyup-django
 ```
 
 and add it to your `INSTALLED_APPS`, before `django.contrib.admin`
 
 ```
 INSTALLED_APPS = [
-    'safety_django',
+    'pyup_django',
     'django.contrib.admin',
 ]
 ```
@@ -31,5 +31,5 @@ INSTALLED_APPS = [
 
 # Support
 
-If you are using `safety` in one of your projects, please consider getting a paid
+If you are using `pyup-django` in one of your projects, please consider getting a paid
 [pyup.io](https://pyup.io) account. This is what makes projects like this possible.

@@ -21,8 +21,8 @@ class StatusAdmin(admin.ModelAdmin):
     def get_urls(self):
         urls = super(StatusAdmin, self).get_urls()
         return [
-            url(r'^safety/$', self.admin_site.admin_view(self.registration_status_view),
-                name="safety"),
+            url(r'^pyup/$', self.admin_site.admin_view(self.registration_status_view),
+                name="pyup"),
         ] + urls
 
     def registration_status_view(self, request):
@@ -35,7 +35,7 @@ class StatusAdmin(admin.ModelAdmin):
             "template": template,
             "run_again_at": time.time() + 60 * 60 * 24
         }
-        request.session["safety_django"] = data
+        request.session["pyup_django"] = data
         return HttpResponse(json.dumps(data), content_type="application/json")
 
 admin.site.register(Status, StatusAdmin)

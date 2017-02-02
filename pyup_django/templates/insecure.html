@@ -1,7 +1,7 @@
 {% if vulns %}
-<div class="safety-header safety-insecure">
-   You have {{ vulns|length }} package{{ vulns|length|pluralize }} with known security vulnerabilities installed. <span id="safety-show"> Show <span id="safety-chevron">&#x25BC;</span></span>
-    <div id="safety-vulns">
+<div class="pyup-header pyup-insecure">
+   You have {{ vulns|length }} package{{ vulns|length|pluralize }} with known security vulnerabilities installed. <span id="pyup-show"> Show <span id="pyup-chevron">&#x25BC;</span></span>
+    <div id="pyup-vulns">
         <table>
             <thead>
             <tr>
