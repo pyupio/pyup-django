@@ -1,23 +1,5 @@
-{% if vulns %}
+{% if insecure %}
 <div class="pyup-header pyup-insecure">
-   You have {{ vulns|length }} package{{ vulns|length|pluralize }} with known security vulnerabilities installed. <span id="pyup-show"> Show <span id="pyup-chevron">&#x25BC;</span></span>
-    <div id="pyup-vulns">
-        <table>
-            <thead>
-            <tr>
-                <th>Package</th>
-                <th>installed</th>
-                <th>affected</th>
-            </tr>
-        {% for vuln in vulns %}
-            <tr>
-                <td>{{ vuln.name }}</td>
-                <td>{{ vuln.version }}</td>
-                <td>{{ vuln.spec }}</td>
-            </tr>
-        {% endfor %}
-            </thead>
-        </table>
-    </div>
+    Django <strong>{{ django_version }}</strong> has known security vulnerabilities.
 </div>
 {% endif %}

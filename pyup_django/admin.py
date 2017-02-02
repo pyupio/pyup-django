@@ -8,8 +8,8 @@ from django.template.loader import render_to_string
 from django import VERSION
 import time
 from .models import Status
-from safety import safety
-import pip
+import requests
+from packaging.specifiers import SpecifierSet
 
 
 class StatusAdmin(admin.ModelAdmin):
@@ -25,16 +25,31 @@ class StatusAdmin(admin.ModelAdmin):
                 name="pyup"),
         ] + urls
 
+    def is_insecure(self, version):
+        r = requests.get("http://localhost:8000/api/v1/insecure/django/")
+        if r.status_code == 200:
+            for spec_str in r.json()['insecure']:
+                spec = SpecifierSet(spec_str)
+                if spec.contains(version):
+                    return True
+        return False
+
     def registration_status_view(self, request):
         request.current_app = self.admin_site.name
-        vulns = safety.check(packages=pip.get_installed_distributions())
-        template = "".join(render_to_string("insecure.html", {"vulns": vulns}).splitlines())
+
+        version = "{}.{}.{}".format(VERSION[0], VERSION[1], VERSION[2])
+
+        insecure = self.is_insecure(version)
+
         data = {
-            "django_version": "{}.{}".format(VERSION[0], VERSION[1]),
-            "insecure": len(vulns) > 0,
-            "template": template,
-            "run_again_at": time.time() + 60 * 60 * 24
+            "django_version": version,
+            "insecure": insecure,
         }
+
+        template = "".join(render_to_string("insecure.html", data).splitlines())
+
+        data["template"] = template
+        data["run_again_at"] = time.time() + 60 * 60 * 24
         request.session["pyup_django"] = data
         return HttpResponse(json.dumps(data), content_type="application/json")
 

@@ -2,6 +2,12 @@
 History
 =======
 
+0.2.1 (2016-2-2)
+------------------
+
+* Renamed the package to pyup-django
+* Removed safety dependency
+
 0.1.1 (2016-11-9)
 ------------------
 

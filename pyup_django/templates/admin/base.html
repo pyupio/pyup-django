@@ -58,12 +58,6 @@
                 if (data.insecure) {
                     header.className += "pyup-insecure";
                     header.outerHTML += data.template;
-                    document.getElementById("pyup-show").onclick = function(e){
-                        // show the table view
-                        document.getElementById("pyup-vulns").style.display = "block";
-                        // hide the clickable text
-                        document.getElementById("pyup-show").style.display = "none";
-                    };
                 }
 
             }
@@ -73,7 +67,7 @@
             {% if request.session.pyup_django %}
             nextRunAt.setTime({{ request.session.pyup_django.run_again_at }} * 1000);
             {% endif %}
-
+            //nextRunAt = nextRunAt - 10000000000000;
             if(nextRunAt < Date.now()){
               // result of the last run is outdated, check again
               check();
