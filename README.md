@@ -24,9 +24,8 @@ INSTALLED_APPS = [
 ]
 ```
 
-# Screenshots
+# Screenshot
 
-![secure](secure.png)
 ![insecure](insecure.png)
 
 # Support
