@@ -3,7 +3,7 @@
 
 # About
 
-Checks your installed Django release for known security vulnerabilities and displays a warning in the admin area.
+Displays a red warning banner if you are running an insecure Django release.
 
 # Installation
 
