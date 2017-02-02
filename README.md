@@ -5,6 +5,8 @@
 
 Displays a red warning banner if you are running an insecure Django release.
 
+![insecure](insecure.png)
+
 # Installation
 
 Install `pyup-django` with pip:
@@ -22,9 +24,14 @@ INSTALLED_APPS = [
 ]
 ```
 
-# Screenshot
+# How does it work?
 
-![insecure](insecure.png)
+`pyup-django` extends the admin base template and checks [https://pyup.io/api/v1/insecure/django/](https://pyup.io/api/v1/insecure/django/)
+if the currently installed Django release is insecure.
+
+Requests to the API are cached for 24 hours and won't leak any sensitive
+information other than the servers IP address.
+
 
 # Support
 
