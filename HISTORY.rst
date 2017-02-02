@@ -2,6 +2,11 @@
 History
 =======
 
+0.3.0 (2016-2-2)
+------------------
+
+* Continue to check if the release has been flagged as insecure.
+
 0.2.1 (2016-2-2)
 ------------------
 
