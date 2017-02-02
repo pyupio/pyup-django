@@ -1,5 +1,3 @@
-*Note: pyup-django is currently in its early stages. It's probably no even installable and likely that there are some false positives and missing packages.*
-
 [![PyPi](https://img.shields.io/pypi/v/pyup-django.svg)](https://pypi.python.org/pypi/pyup-django)
 [![Travis](https://img.shields.io/travis/pyupio/pyup-django.svg)](https://travis-ci.org/pyupio/pyup-django)
 
