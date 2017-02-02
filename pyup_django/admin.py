@@ -8,6 +8,7 @@ from django.template.loader import render_to_string
 from django import VERSION
 import time
 from .models import Status
+from .settings import settings
 import requests
 from packaging.specifiers import SpecifierSet
 
@@ -26,7 +27,7 @@ class StatusAdmin(admin.ModelAdmin):
         ] + urls
 
     def is_insecure(self, version):
-        r = requests.get("http://localhost:8000/api/v1/insecure/django/")
+        r = requests.get(settings.API_URL)
         if r.status_code == 200:
             for spec_str in r.json()['insecure']:
                 spec = SpecifierSet(spec_str)
