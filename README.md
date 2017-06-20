@@ -1,4 +1,4 @@
-[![safety](https://raw.githubusercontent.com/pyupio/pyup-django/master/safety-django.png)](https://pyup.io/safety/)
+[![safety](https://raw.githubusercontent.com/pyupio/pyup-django/master/safety-django.jpg)](https://pyup.io/safety/)
 
 
 [![PyPi](https://img.shields.io/pypi/v/pyup-django.svg)](https://pypi.python.org/pypi/pyup-django)
