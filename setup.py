@@ -20,6 +20,7 @@ setup(
     version='0.4.0',
     description="pyup-django checks your installed dependencies for known security vulnerabilities and displays them in the admin area.",
     long_description=readme,
+    long_description_content_type="text/markdown",
     author="pyup.io",
     author_email='support@pyup.io',
     url='https://github.com/pyupio/pyup-django',
